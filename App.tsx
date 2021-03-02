@@ -1,14 +1,4 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
-
-import React, { useReducer, useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -23,11 +13,7 @@ import {
 } from 'react-native';
 
 import {
-  Header,
-  LearnMoreLinks,
   Colors,
-  DebugInstructions,
-  ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
 import DiscoveryScreen from './components/screens/DiscoveryScreen'
@@ -40,7 +26,14 @@ declare const global: { HermesInternal: null | {} };
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-function TabsScreen() {
+const TabNavigator = () => {
+  const { state, actions } = useContext(context);
+
+  useEffect(() => {
+
+
+  }, []);
+
   return (
     <Tab.Navigator>
       <Tab.Screen name="Home" component={HomeScreen} />
@@ -56,7 +49,7 @@ const App = () => {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Discover" component={DiscoveryScreen} />
-          <Stack.Screen name="Tabs" component={TabsScreen} options={{
+          <Stack.Screen name="Tabs" component={TabNavigator} options={{
             headerLeft: () => null,
             title: 'iZone'
           }} />

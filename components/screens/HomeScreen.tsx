@@ -1,19 +1,22 @@
 import React, { useContext, useEffect } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Button } from 'react-native';
 
 import { context } from '../../store/store';
 
 const HomeScreen = () => {
-    const { state, actions } = useContext(context);
+  const { state, actions } = useContext(context);
 
-    useEffect(() => {
-    }, []);
+  useEffect(() => {
+    actions.getStatus();
+  }, []);
 
-    return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>Home</Text>
-        </View>
-    );
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Home {state.status.unitType}</Text>
+      <Button onPress={actions.turnOn} title="Turn On" />
+      <Button onPress={actions.turnOff} title="Turn Off" />
+    </View>
+  );
 };
 
 export default HomeScreen;

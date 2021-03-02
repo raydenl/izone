@@ -1,6 +1,6 @@
 import dgram from 'react-native-udp';
 
-const udp = new Promise((resolve, reject) => {
+export const discoverBridge = new Promise((resolve, reject) => {
     const client = dgram.createSocket({ type: 'udp4' });
 
     client.bind(0, (err: any) => {
@@ -23,5 +23,3 @@ const udp = new Promise((resolve, reject) => {
         });
     });
 });
-
-export default udp;
